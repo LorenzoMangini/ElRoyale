@@ -34,27 +34,28 @@ export default function Reservation() {
       {/* Awards */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="flex gap-4 overflow-hidden">
-              {[images.client1, images.client2, images.client3, images.client4, images.client5, images.client6, images.client7].map((img, i) => (
-                <img key={i} src={img.url} alt={img.alt} className="h-16 opacity-50 hover:opacity-100 transition-opacity" />
-              ))}
-            </div>
-            <div>
-              <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
-                {t('awards.subtitle')}
-              </span>
-              <h3 className="text-2xl mb-4">{t('awards.title')}</h3>
-              <p className="text-muted-foreground text-sm mb-6">{t('awards.desc')}</p>
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                {awards.map((award, i) => (
-                  <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                    <span className="text-primary mt-1">•</span>
-                    {award}
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="text-center mb-12">
+            <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)', color: '#c9a96e' }}>
+              {t('awards.subtitle')}
+            </span>
+            <h3 className="text-3xl mb-4">{t('awards.title')}</h3>
+            <img src={images.shape2.url} alt="" className="mx-auto h-3 mb-6" aria-hidden="true" />
+            <p className="text-muted-foreground text-sm max-w-xl mx-auto">{t('awards.desc')}</p>
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6 mb-12">
+            {[images.client1, images.client2, images.client3, images.client4, images.client5, images.client6, images.client7].map((img, i) => (
+              <img key={i} src={img.url} alt={img.alt} className="h-20 hover:opacity-100 transition-opacity" />
+            ))}
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-3 max-w-3xl mx-auto">
+            {awards.map((award, i) => (
+              <li key={i} className="text-sm text-muted-foreground flex items-center gap-2 list-none">
+                <span className="w-2 h-2 rounded-full inline-block flex-shrink-0" style={{ backgroundColor: '#c9a96e' }}></span>
+                {award}
+              </li>
+            ))}
           </div>
         </div>
       </section>

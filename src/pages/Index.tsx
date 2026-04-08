@@ -5,7 +5,6 @@ import { images } from '@/data/images'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import HeroSlider from '@/components/Elroyale/HeroSlider'
 import SectionHeading from '@/components/Elroyale/SectionHeading'
-import MenuItem from '@/components/Elroyale/MenuItem'
 import TestimonialCarousel from '@/components/Elroyale/TestimonialCarousel'
 import BlogPostCard from '@/components/Elroyale/BlogPostCard'
 
@@ -41,6 +40,9 @@ function AnimatedSection({ children, className, style }: { children: React.React
 }
 
 export default function Index() {
+  const leftItems = dailySpecials.slice(0, 3)
+  const rightItems = dailySpecials.slice(3, 6)
+
   return (
     <>
       <HeroSlider />
@@ -63,8 +65,8 @@ export default function Index() {
               <img src={images.signature.url} alt="Signature" className="h-10 mx-auto mb-6" />
             </div>
 
-            <div className="relative min-h-[500px] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${images.pattern3.url})` }}>
-              <div className="absolute inset-0 bg-black/60" />
+            <div className="relative min-h-[500px] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${images.pattern3.url})`, backgroundColor: '#1a1a1a' }}>
+              <div className="absolute inset-0 bg-black/20" />
               <div className="relative z-10 text-center text-white p-8">
                 <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
                   {t('about.openingTimes.subtitle')}
@@ -98,9 +100,22 @@ export default function Index() {
         <div className="absolute inset-0 bg-black/70" />
         <div className="relative z-10 container mx-auto px-4">
           <SectionHeading subtitle={t('menu.dailySpecials.subtitle')} title={t('menu.dailySpecials.title')} light />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
-            {dailySpecials.map((item) => (
-              <MenuItem key={item.name} name={item.name} description={item.desc} price={item.price} image={item.image} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[leftItems, rightItems].map((group, gi) => (
+              <div key={gi} className="bg-white border p-8" style={{ borderColor: '#c9a96e' }}>
+                {group.map((item) => (
+                  <div key={item.name} className="flex items-center gap-4 mb-6 last:mb-0">
+                    <img src={item.image} alt={item.name} className="w-20 h-20 object-cover flex-shrink-0" />
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <h4 className="text-sm font-semibold text-gray-900">{item.name}</h4>
+                        <span className="text-sm font-semibold whitespace-nowrap" style={{ color: '#c9a96e' }}>{item.price}</span>
+                      </div>
+                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">{item.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ))}
           </div>
         </div>

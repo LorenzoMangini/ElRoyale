@@ -35,19 +35,19 @@ export default function OurGuestbook() {
           <TestimonialCarousel light />
         </div>
       </section>
-      <section className="py-20 relative bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${images.bg16.url})` }}>
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 container mx-auto px-4">
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="grid grid-cols-2 gap-4">
               <img src={images.banner1.url} alt="" className="w-full h-64 object-cover" />
               <img src={images.banner2.url} alt="" className="w-full h-64 object-cover" />
             </div>
-            <div className="text-white">
-              <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>{t('banner.hostEvent.subtitle')}</span>
-              <h3 className="text-3xl text-white mb-4">{t('banner.hostEvent.title')}</h3>
-              <p className="text-white/70 text-sm leading-relaxed mb-6">{t('banner.hostEvent.desc')}</p>
-              <Link to="/events" className="inline-block px-8 py-3 bg-primary text-white text-xs font-semibold uppercase tracking-wider hover:bg-primary/90">
+            <div>
+              <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)', color: '#c9a96e' }}>{t('banner.hostEvent.subtitle')}</span>
+              <h3 className="text-3xl text-gray-900 mb-4">{t('banner.hostEvent.title')}</h3>
+              <img src={images.shape2.url} alt="" className="mb-4 h-3" aria-hidden="true" />
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">{t('banner.hostEvent.desc')}</p>
+              <Link to="/events" className="text-sm font-semibold text-gray-900 underline underline-offset-4 hover:text-primary">
                 {t('banner.hostEvent.cta')}
               </Link>
             </div>
