@@ -1,0 +1,32 @@
+{
+  "id": "elroyale",
+  "name": "Elroyale",
+  "category": "restaurant",
+  "description": "Premium restaurant & hotel template with elegant gold theme, multiple menu layouts, event management, shop, blog, and gallery sections.",
+  "tags": ["restaurant", "hotel", "food", "luxury", "menu", "reservation", "shop", "events", "gallery", "blog"],
+  "highlights": [
+    "25 pages converted to React components",
+    "5 unique menu page layouts (Classic, Mixed, Board, Gallery, Cards)",
+    "Full e-commerce shop with product detail and cart",
+    "Event listing and detail pages",
+    "Blog with carousel, grid, standard, and sidebar layouts",
+    "Gallery with lightbox and filtering",
+    "Reservation form with opening times",
+    "FAQ accordion section",
+    "Testimonial carousel",
+    "Team/chef showcase"
+  ],
+  "fonts": {
+    "heading": "Yeseva One",
+    "body": "Poppins",
+    "accent": "Kristi"
+  },
+  "colors": {
+    "primary": "#d3a971",
+    "foreground": "#282828",
+    "body": "#9b9b9b",
+    "dark": "#222222",
+    "background": "#ffffff",
+    "gray": "#f9f9f9"
+  }
+}
