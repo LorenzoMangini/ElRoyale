@@ -48,23 +48,22 @@ export default function Index() {
       {/* About Section */}
       <AnimatedSection className="py-20 lg:py-28">
         <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
+              {t('about.subtitle')}
+            </span>
+            <h2 className="text-2xl lg:text-4xl mb-4">{t('about.title')}</h2>
+            <img src={images.shape2.url} alt="" className="mx-auto h-3" aria-hidden="true" />
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             <div className="text-center">
               <img src={images.logoDark.url} alt={images.logoDark.alt} className="h-16 mx-auto mb-6" />
-              <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
-                {t('about.subtitle')}
-              </span>
-              <h2 className="text-2xl lg:text-3xl mb-4">{t('about.title')}</h2>
-              <img src={images.shape2.url} alt="" className="mx-auto mb-4 h-3" aria-hidden="true" />
               <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t('about.description')}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">{t('about.paragraph1')}</p>
               <img src={images.signature.url} alt="Signature" className="h-10 mx-auto mb-6" />
-              <Link to="/reservation" className="inline-block px-8 py-3 bg-primary text-white text-xs font-semibold uppercase tracking-wider hover:bg-primary/90 transition-colors">
-                {t('about.reservationBtn')}
-              </Link>
             </div>
 
-            <div className="relative min-h-[500px] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${images.bg12.url})` }}>
+            <div className="relative min-h-[500px] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${images.pattern3.url})` }}>
               <div className="absolute inset-0 bg-black/60" />
               <div className="relative z-10 text-center text-white p-8">
                 <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
@@ -84,8 +83,11 @@ export default function Index() {
             </div>
 
             <div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t('about.paragraph2')}</p>
-              <img src={images.feature1.url} alt="" className="w-full h-64 object-cover" />
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t('about.paragraph1')}</p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">{t('about.paragraph2')}</p>
+              <Link to="/reservation" className="inline-block px-8 py-3 bg-primary text-white text-xs font-semibold uppercase tracking-wider hover:bg-primary/90 transition-colors">
+                {t('about.reservationBtn')}
+              </Link>
             </div>
           </div>
         </div>
