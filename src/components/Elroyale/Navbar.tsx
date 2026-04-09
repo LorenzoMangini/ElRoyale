@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { Menu, X, Search, ShoppingCart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { t } from '@/i18n'
 import { images } from '@/data/images'
-import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+import gsap from 'gsap'
+import ScrollTrigger from 'gsap/ScrollTrigger'
 
 const navItems = [
   {
@@ -57,28 +58,41 @@ const navItems = [
 ]
 
 export default function Navbar() {
-  const scrollY = useScrollPosition()
   const location = useLocation()
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const isFixed = scrollY > 100
-  const isHome = location.pathname === '/'
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger)
+
+    const showAnim = gsap
+      .from('.main-tool-bar', {
+        yPercent: -100,
+        paused: true,
+        duration: 0.2,
+      })
+      .progress(1)
+
+    const trigger = ScrollTrigger.create({
+      start: 'top top',
+      end: 'max',
+      onUpdate: (self) => {
+        self.direction === -1 ? showAnim.play() : showAnim.reverse()
+      },
+    })
+
+    return () => {
+      trigger.kill()
+    }
+  }, [])
 
   return (
     <header
       className={cn(
-        'w-full z-50 transition-all duration-300',
-        isHome && !isFixed ? 'absolute top-0 left-0' : '',
-        isFixed
-          ? 'fixed top-0 left-0 bg-foreground/95 backdrop-blur-sm shadow-lg'
-          : isHome
-            ? 'bg-transparent'
-            : 'bg-foreground'
+        'main-tool-bar fixed top-0 left-0 w-full z-50 bg-foreground/95 backdrop-blur-sm shadow-lg transition-all duration-300'
       )}
     >
       <nav className="container mx-auto px-4 flex items-center justify-between h-20 lg:h-24">
-        {/* Logo */}
         <Link to="/" className="flex-shrink-0">
           <img
             src={images.logoLight.url}
@@ -87,7 +101,6 @@ export default function Navbar() {
           />
         </Link>
 
-        {/* Desktop Navigation */}
         <ul className="hidden lg:flex items-center gap-1">
           <li>
             <Link
@@ -102,6 +115,7 @@ export default function Navbar() {
               {t('nav.home')}
             </Link>
           </li>
+
           {navItems.map((item) => (
             <li
               key={item.label}
@@ -117,6 +131,7 @@ export default function Navbar() {
               >
                 {t(item.label)}
               </button>
+
               {activeDropdown === item.label && (
                 <div className="absolute top-full left-0 pt-2 z-50">
                   <ul className="bg-white shadow-xl min-w-[200px] py-2">
@@ -137,7 +152,6 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Action Buttons */}
         <div className="flex items-center gap-3">
           <Link
             to="/reservation"
@@ -146,7 +160,6 @@ export default function Navbar() {
             {t('nav.reservation')}
           </Link>
 
-          {/* Mobile Menu */}
           <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
             <SheetTrigger asChild>
               <button
@@ -156,7 +169,11 @@ export default function Navbar() {
                 <Menu className="h-6 w-6" />
               </button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-foreground border-none p-0 overflow-y-auto">
+
+            <SheetContent
+              side="right"
+              className="w-[300px] bg-foreground border-none p-0 overflow-y-auto"
+            >
               <div className="p-6">
                 <img
                   src={images.logoLight.url}
@@ -166,6 +183,7 @@ export default function Navbar() {
                 <p className="text-white/60 text-xs leading-relaxed mb-8">
                   {t('hamburgerMenu.description')}
                 </p>
+
                 <nav className="space-y-1">
                   <Link
                     to="/"
@@ -174,6 +192,7 @@ export default function Navbar() {
                   >
                     {t('nav.home')}
                   </Link>
+
                   {navItems.map((item) => (
                     <MobileDropdown
                       key={item.label}
@@ -182,6 +201,7 @@ export default function Navbar() {
                     />
                   ))}
                 </nav>
+
                 <div className="mt-8 pt-6 border-t border-white/10 space-y-3">
                   <p className="text-white/40 text-xs">
                     {t('hamburgerMenu.mainEmailLabel')}{' '}
@@ -233,6 +253,7 @@ function MobileDropdown({
           ▾
         </span>
       </button>
+
       {open && (
         <div className="pl-4 space-y-1">
           {item.children.map((child) => (

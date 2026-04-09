@@ -23,8 +23,17 @@ const blogPosts = [
   { id: '3', image: images.blogGrid3.url, categories: ['Chef', 'Dinner'], title: 'Desserts With Cream Cheese Frosting Taste of Home', date: 'Jan 17, 2020' },
 ]
 
-function AnimatedSection({ children, className, style }: { children: React.ReactNode; className?: string; style?: React.CSSProperties }) {
+function AnimatedSection({
+  children,
+  className,
+  style,
+}: {
+  children: React.ReactNode
+  className?: string
+  style?: React.CSSProperties
+}) {
   const { ref, isInView } = useScrollAnimation()
+
   return (
     <motion.section
       ref={ref}
@@ -48,46 +57,104 @@ export default function Index() {
       <HeroSlider />
 
       {/* About Section */}
-      <AnimatedSection className="py-20 lg:py-28">
+      <AnimatedSection className="py-20 lg:py-28 bg-[#f6f3ee]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
+            <span
+              className="block text-primary text-2xl mb-2"
+              style={{ fontFamily: 'var(--font-accent)' }}
+            >
               {t('about.subtitle')}
             </span>
             <h2 className="text-2xl lg:text-4xl mb-4">{t('about.title')}</h2>
-            <img src={images.shape2.url} alt="" className="mx-auto h-3" aria-hidden="true" />
+            <img
+              src={images.shape2.url}
+              alt=""
+              className="mx-auto h-3"
+              aria-hidden="true"
+            />
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center">
             <div className="text-center">
-              <img src={images.logoDark.url} alt={images.logoDark.alt} className="h-16 mx-auto mb-6" />
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t('about.description')}</p>
-              <img src={images.signature.url} alt="Signature" className="h-10 mx-auto mb-6" />
+              <img
+                src={images.logoDark.url}
+                alt={images.logoDark.alt}
+                className="h-16 mx-auto mb-6"
+              />
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                {t('about.description')}
+              </p>
+              <img
+                src={images.signature.url}
+                alt="Signature"
+                className="h-10 mx-auto mb-6"
+              />
             </div>
 
-            <div className="relative min-h-[500px] bg-cover bg-center flex items-center justify-center" style={{ backgroundImage: `url(${images.pattern3.url})`, backgroundColor: '#1a1a1a' }}>
+            <div
+              className="relative min-h-[500px] bg-cover bg-center flex items-center justify-center"
+              style={{
+                backgroundImage: `url(${images.pattern3.url})`,
+                backgroundColor: '#1a1a1a',
+              }}
+            >
               <div className="absolute inset-0 bg-black/20" />
               <div className="relative z-10 text-center text-white p-8">
-                <span className="block text-primary text-2xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>
+                <span
+                  className="block text-primary text-2xl mb-2"
+                  style={{ fontFamily: 'var(--font-accent)' }}
+                >
                   {t('about.openingTimes.subtitle')}
                 </span>
-                <h3 className="text-2xl text-white mb-8">{t('about.openingTimes.title')}</h3>
+                <h3 className="text-2xl text-white mb-8">
+                  {t('about.openingTimes.title')}
+                </h3>
                 <ul className="space-y-4 text-sm">
-                  <li className="flex justify-between gap-8"><span className="text-white/70">{t('about.openingTimes.weekdays')}</span><span>{t('about.openingTimes.weekdaysHours')}</span></li>
-                  <li className="flex justify-between gap-8"><span className="text-white/70">{t('about.openingTimes.saturday')}</span><span>{t('about.openingTimes.saturdayHours')}</span></li>
-                  <li className="flex justify-between gap-8"><span className="text-white/70">{t('about.openingTimes.sunday')}</span><span>{t('about.openingTimes.sundayHours')}</span></li>
+                  <li className="flex justify-between gap-8">
+                    <span className="text-white/70">
+                      {t('about.openingTimes.weekdays')}
+                    </span>
+                    <span>{t('about.openingTimes.weekdaysHours')}</span>
+                  </li>
+                  <li className="flex justify-between gap-8">
+                    <span className="text-white/70">
+                      {t('about.openingTimes.saturday')}
+                    </span>
+                    <span>{t('about.openingTimes.saturdayHours')}</span>
+                  </li>
+                  <li className="flex justify-between gap-8">
+                    <span className="text-white/70">
+                      {t('about.openingTimes.sunday')}
+                    </span>
+                    <span>{t('about.openingTimes.sundayHours')}</span>
+                  </li>
                 </ul>
                 <div className="mt-8">
-                  <span className="text-white/60 text-xs block mb-1">{t('about.openingTimes.callLabel')}</span>
-                  <a href="tel:0201023456789" className="text-primary text-xl font-semibold">{t('about.openingTimes.phone')}</a>
+                  <span className="text-white/60 text-xs block mb-1">
+                    {t('about.openingTimes.callLabel')}
+                  </span>
+                  <a
+                    href="tel:0201023456789"
+                    className="text-primary text-xl font-semibold"
+                  >
+                    {t('about.openingTimes.phone')}
+                  </a>
                 </div>
               </div>
             </div>
 
             <div>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-4">{t('about.paragraph1')}</p>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">{t('about.paragraph2')}</p>
-              <Link to="/reservation" className="inline-block px-8 py-3 bg-primary text-white text-xs font-semibold uppercase tracking-wider hover:bg-primary/90 transition-colors">
+              <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                {t('about.paragraph1')}
+              </p>
+              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                {t('about.paragraph2')}
+              </p>
+              <Link
+                to="/reservation"
+                className="inline-block px-8 py-3 bg-primary text-white text-xs font-semibold uppercase tracking-wider hover:bg-primary/90 transition-colors"
+              >
                 {t('about.reservationBtn')}
               </Link>
             </div>
@@ -96,22 +163,45 @@ export default function Index() {
       </AnimatedSection>
 
       {/* Daily Specials */}
-      <AnimatedSection className="py-20 relative bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${images.bg4.url})` }}>
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative z-10 container mx-auto px-4">
-          <SectionHeading subtitle={t('menu.dailySpecials.subtitle')} title={t('menu.dailySpecials.title')} light />
+      <AnimatedSection className="py-20 bg-[#f6f3ee]">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            subtitle={t('menu.dailySpecials.subtitle')}
+            title={t('menu.dailySpecials.title')}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[leftItems, rightItems].map((group, gi) => (
-              <div key={gi} className="bg-white border p-8" style={{ borderColor: '#c9a96e' }}>
+              <div
+                key={gi}
+                className="bg-white border p-8 shadow-sm"
+                style={{ borderColor: '#e7dfd2' }}
+              >
                 {group.map((item) => (
-                  <div key={item.name} className="flex items-center gap-4 mb-6 last:mb-0">
-                    <img src={item.image} alt={item.name} className="w-20 h-20 object-cover flex-shrink-0" />
+                  <div
+                    key={item.name}
+                    className="flex items-center gap-4 mb-6 last:mb-0"
+                  >
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-20 h-20 object-cover flex-shrink-0"
+                    />
                     <div className="flex-1">
                       <div className="flex items-center justify-between gap-2">
-                        <h4 className="text-sm font-semibold text-gray-900">{item.name}</h4>
-                        <span className="text-sm font-semibold whitespace-nowrap" style={{ color: '#c9a96e' }}>{item.price}</span>
+                        <h4 className="text-sm font-semibold text-gray-900">
+                          {item.name}
+                        </h4>
+                        <span
+                          className="text-sm font-semibold whitespace-nowrap"
+                          style={{ color: '#c9a96e' }}
+                        >
+                          {item.price}
+                        </span>
                       </div>
-                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">{item.desc}</p>
+                      <p className="text-xs text-gray-500 mt-1 leading-relaxed">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
                 ))}
@@ -121,28 +211,51 @@ export default function Index() {
         </div>
       </AnimatedSection>
 
-      {/* Text Banner */}
-      <section className="py-24 relative bg-cover bg-center bg-fixed" style={{ backgroundImage: `url(${images.bg16.url})` }}>
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="relative z-10 text-center">
-          <span className="block text-primary text-3xl mb-2" style={{ fontFamily: 'var(--font-accent)' }}>{t('banner.weCreateMemories.subtitle')}</span>
-          <h2 className="text-white text-3xl lg:text-5xl">{t('banner.weCreateMemories.title')}</h2>
+      {/* Clean Banner */}
+      <section className="bg-[#f6f3ee] py-10 md:py-14">
+        <div className="w-full">
+          <div
+            className="relative w-full min-h-[420px] md:min-h-[520px] bg-cover bg-center overflow-hidden"
+            style={{ backgroundImage: `url(${images.bg16.url})` }}
+          >
+            <div className="absolute inset-0 bg-black/55" />
+
+            <div className="relative z-10 flex min-h-[420px] md:min-h-[520px] items-center justify-center px-6">
+              <div className="text-center max-w-5xl mx-auto">
+                <span
+                  className="block text-primary text-2xl md:text-3xl mb-4"
+                  style={{ fontFamily: 'var(--font-accent)' }}
+                >
+                  {t('banner.weCreateMemories.subtitle')}
+                </span>
+
+                <h2 className="text-white text-4xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tight">
+                  {t('banner.weCreateMemories.title')}
+                </h2>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Testimonials */}
-      <AnimatedSection className="py-20 relative bg-cover bg-center" style={{ backgroundImage: `url(${images.bg1.url})` }}>
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative z-10 container mx-auto px-4">
-          <SectionHeading subtitle={t('testimonials.subtitle')} title={t('testimonials.title')} light />
-          <TestimonialCarousel light />
+      <AnimatedSection className="py-20 bg-[#f6f3ee]">
+        <div className="container mx-auto px-4">
+          <SectionHeading
+            subtitle={t('testimonials.subtitle')}
+            title={t('testimonials.title')}
+          />
+          <TestimonialCarousel />
         </div>
       </AnimatedSection>
 
       {/* Blog Grid */}
-      <AnimatedSection className="py-20">
+      <AnimatedSection className="py-20 bg-white">
         <div className="container mx-auto px-4">
-          <SectionHeading subtitle={t('pageTitle.blog.subtitle')} title={t('pageTitle.blog.title')} />
+          <SectionHeading
+            subtitle={t('pageTitle.blog.subtitle')}
+            title={t('pageTitle.blog.title')}
+          />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
               <BlogPostCard key={post.id} {...post} />
